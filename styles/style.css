@@ -100,37 +100,64 @@
 
 .cards {
   border: 2px solid var(--accent-color);
-
 }
 
 .cards__list {
-
 }
 
 .cards__list-item {
   background-color: var(--bg-color);
-
 }
 
 .card {
   display: flex;
   flex-direction: column;
-  /*align-items: center;
-  justify-content: center; */
 }
 
 .card__title {
   font-style: normal;
   font-variation-settings: 'wght' var(--title-font-weight);
   font-size: 18px;
-  line-height: 121%; /* 22px */
+  line-height: 121%;
   padding: 3px 10px;
 }
 
-.card__image {
-  /* display: block; */
-  width: 100%;
+.card__image-container {
+  position: relative;
 }
+
+.card__image {
+  display: block;
+  inline-size: 100%;
+}
+
+.card__image-label {
+  display: block;
+  position: absolute;
+  inset: 25px 25px auto auto;
+  font-family: var(--accent-font);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  mix-blend-mode: hard-light;
+  opacity: 0.5;
+  text-shadow:
+    -1px 0 var(--stroke-color), 
+    0 1px var(--stroke-color), 
+    1px 0 var(--stroke-color), 
+    0 -1px var(--stroke-color);
+}
+
+@supports((text-stroke: 1px var(--stroke-color)) or (-webkit-text-stroke: 1px var(--stroke-color))) {
+  .card__image-label {
+      -webkit-text-stroke: 1px var(--stroke-color);
+      text-stroke: 1px var(--stroke-color);
+      text-shadow: none;
+  }
+} 
 
 .card__description {
   display: flex;
@@ -142,17 +169,14 @@
 .card__paragraph {
   font-style: normal;
   font-size: 18px;
-  line-height: 117%; /* 21px */
+  line-height: 117%;
 }
 
 .card__like {
-  /* align-self: flex-end; */
   padding: 0 25px 25px 0;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  /* gap: 8px; */
-
 }
 
 .card__icon-button {
@@ -182,20 +206,17 @@
   padding: 52px 0 103px;
   display: flex;
   justify-content: center;
-  
 }
 
 .card__save-button {
   inline-size: 335px;
   block-size: 55px;
   border: 2px solid var(--accent-color);
-
   font-family: var(--accent-font);
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 90%;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -205,7 +226,6 @@
 .save-icon {
   inline-size: 21px;
   block-size: 21px;
-
 }
 
 .button__text {
@@ -214,10 +234,20 @@
 
 @media (width <= 375px) {
 
+  .card__image-label {
+    inset-inline-end: 17px;
+  }
+
   .card__save-button {
     flex-direction: column;
     inline-size: 306px;
     block-size: 84px;
-}
+  }
+
+  .save-icon {
+    inline-size: 28px;
+    block-size: 28px;
+  }
 
 }
+
