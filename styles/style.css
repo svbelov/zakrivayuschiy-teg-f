@@ -150,11 +150,16 @@
 }
 
 .cards {
-  border: 2px solid var(--accent-color);
+  
 }
 
 .cards__list-item {
   background-color: var(--bg-color);
+  border: 2px solid var(--accent-color);
+}
+
+.cards__list-item:not(:last-child) {
+  margin-block-end: 50px;
 }
 
 .card {
@@ -383,6 +388,35 @@ position: relative;
   background-color: #000000;
   opacity: 0.75;
 } 
+
+
+.filter-brightness {
+  filter: brightness(200%);
+}
+
+.filter-contrast {
+  filter: contrast(150%);
+}
+
+.filter-blur {
+  filter: blur(0.8rem);
+}
+
+.filter-saturate {
+  filter: saturate(28%)
+}
+
+.filter-sepia {
+  filter: sepia(90%);
+}
+
+.filter-invert {
+  filter: invert(0.7);
+}
+
+.filter-multiple {
+  filter: brightness(120%) saturate(110%) hue-rotate(75deg);
+}
 
 
 @media (width <= 375px) {
