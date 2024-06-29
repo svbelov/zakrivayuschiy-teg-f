@@ -97,15 +97,6 @@
   animation: moving-arrow 0.5s infinite alternate ease-in-out;
 }
 
-@keyframes moving-arrow {
-  from{
-    inset-inline-start: -10px;
-  }
-  to {
-    inset-inline-start: -14px;
-  }
-}
-
 .theme-menu__button:hover,
 .theme-menu__button:disabled {
   opacity: 0.6;
@@ -160,9 +151,6 @@
 
 .cards {
   border: 2px solid var(--accent-color);
-}
-
-.cards__list {
 }
 
 .cards__list-item {
@@ -232,19 +220,21 @@
   line-height: 117%;
 }
 
-.card__like {
+.card__like-container {
   padding: 0 25px 25px 0;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 5px;
+  gap: 4px;
 }
 
 .card__icon-button {
-  inline-size: 38px;
-  block-size: 38px;
   border: 2px solid transparent;
   background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  inline-size: 38px;
+  block-size: 38px;
 }
 
 .card__icon-button:focus {
@@ -254,10 +244,6 @@
 .card__icon-button:focus-visible {
   border-color: var(--accent-color);
   transition: border-color 0.3s ease;
-}
-
-.like-icon {
-  
 }
 
 .card__like-button {
@@ -275,14 +261,16 @@
 }
 
 .card__like-button:focus,
-.card__save-button:focus {
+.save-button:focus,
+.modal__button:focus {
   outline: none;
   box-shadow: 2px 2px 0 0 var(--accent-color);
   transition: box-shadow 0.3s ease;
 }
 
 .card__like-button::after,
-.card__save-button::after {
+.save-button::after,
+.modal__button::after {
   content: '';
   display: block;
   width: 100%;
@@ -295,7 +283,8 @@
 }
 
 .card__like-button:hover::after,
-.card__save-button:hover::after {
+.save-button:hover::after,
+.modal__button:hover::after {
   transform: scaleX(1);
   transition: transform 0.5s ease-in-out;
 }
@@ -306,7 +295,7 @@
   justify-content: center;
 }
 
-.card__save-button {
+.save-button {
   inline-size: 335px;
   block-size: 55px;
   border: 2px solid var(--accent-color);
@@ -322,6 +311,7 @@
   position: relative;
   color: var(--accent-color);
   background-color: var(--bg-color);
+  cursor: pointer;
 }
 
 .save-icon {
@@ -340,13 +330,68 @@
   mix-blend-mode: difference;
 }
 
+.modal[open] {
+inline-size: 357px;
+background-color: var(--bg-color);
+/* background-color: transparent; */
+border: 2px solid var(--accent-color);
+padding: 30px;
+display: grid;
+gap: 30px;
+}
+
+.modal__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.modal__save-icon {
+inline-size: 39px;
+block-size: 39px;
+color: var(--accent-color);
+}
+
+.modal__text {
+inline-size: 234px;
+font-family: var(--accent-font);
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 150%;
+text-transform: uppercase;
+color: var(--accent-color);
+}
+
+.modal__button {
+font-family: var(--accent-font);
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 90%;
+inline-size: 293px;
+block-size: 38px;
+border: 2px solid var(--accent-color);
+cursor: pointer;
+background-color: var(--bg-color);
+text-transform: uppercase;
+position: relative;
+}
+
+.modal::backdrop {
+  background-color: #000000;
+  opacity: 0.75;
+} 
+
+
 @media (width <= 375px) {
 
   .card__image-label {
     inset-inline-end: 17px;
   }
 
-  .card__save-button {
+  .save-button {
     flex-direction: column;
     inline-size: 306px;
     block-size: 84px;
@@ -355,6 +400,19 @@
   .save-icon {
     inline-size: 28px;
     block-size: 28px;
+  }
+
+  .modal[open] {
+    inline-size: 341px;
+    padding: 30px 42px;
+  }
+
+  .modal__text {
+    inline-size: 198px;
+  }
+
+  .modal__button {
+    inline-size: 257px;
   }
 
 }

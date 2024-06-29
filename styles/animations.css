@@ -12,3 +12,110 @@
 
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 */
+
+@keyframes moving-arrow {
+    from{
+      inset-inline-start: -10px;
+    }
+    to {
+      inset-inline-start: -14px;
+    }
+  }
+
+  .like-icon .sparks {
+    opacity: 0;
+}
+
+.like-icon .core {
+    fill: var(--bg-color);
+    transition: fill 0.3s linear 0.03s;
+}
+
+.like-icon:hover .core {
+    fill: var(--heart-contour-color);
+    transition: fill 0.3s linear;
+}
+
+.like-icon:active .core {
+    fill: var(--heart-fill-color);
+    transition: fill 0.3s linear;    
+}
+
+.like-icon .main-body {
+    fill: var(--bg-color);
+    transition: fill 0.3s linear;
+}
+
+.like-icon:hover .main-body {
+    fill: var(--heart-contour-color);
+    transition: fill 0.3s linear 0.05s;
+}
+
+.like-icon:active .main-body {
+    fill: var(--heart-fill-color);
+    transition: fill 0.3s linear 0.05s;
+}
+
+
+/* События при клике по иконке/кнопке Like: */
+
+/* 1. Закрашивается сердцевина. */
+.like-icon.is-liked .core {
+    fill: var(--heart-fill-color);
+    transition: fill 0.3s linear; 
+}
+
+
+/* 2. С небольшой задержкой закрашивается основное тело. */
+.like-icon.is-liked .main-body {
+    fill: var(--heart-fill-color);
+    transition: fill 0.3s linear 0.05s;
+}
+
+
+/* 3. С ещё большей задержкой закрашивается контур. */
+.like-icon.is-liked .contour {
+    fill: var(--heart-fill-color);
+    transition: fill 0.3s linear 0.06s;
+}
+
+
+/* 4. Происходит небольшое масштабирование сердца и возврат к исходному масштабу. */
+@keyframes heart-scale {
+    from{
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.5);
+    }
+  }
+
+.heart {
+    transform-origin: center;
+}
+
+.like-icon.is-liked .heart {
+    animation: heart-scale 0.3s ease-in 0.1s 2 alternate;
+}
+
+
+/* 5. Становятся видимыми и пропадают искры. */
+
+@keyframes heart-sparks {
+    from{
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+  }
+
+  .like-icon.is-liked .sparks {
+    animation: heart-sparks 0.3s ease-in 0.3s 2 alternate;
+}
+
+/* 6. Перекрашивание контура обратно при unlinke . */
+.like-icon .contour {
+    fill: var(--heart-contour-color);
+    transition: fill 0.1s linear;
+}
