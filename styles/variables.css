@@ -4,38 +4,14 @@
     --accent-font: 'Press Start 2P';
     --main-text-font-weight: 400;
     --title-font-weight: 700;
-
     --bg-color: #FFFFFF;
     --accent-color: #000000;
     --stroke-color: #FFFFFF;
     --btn-text-color: #FFFFFF;
-
     --bg-image: repeating-linear-gradient(270deg, #d3d3d3 0px 2px, transparent 2px 4px),
     repeating-linear-gradient(0deg, #d3d3d3 0px 2px, transparent 2px 4px),
     linear-gradient(#e7e7e7 0.01%, #1a1a1a 100%);
-
     --section-width: clamp(23.438rem, 30.516vw + 16.285rem, 43.75rem);
-
     --heart-contour-color: #000000;
     --heart-fill-color: red;
-
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --main-text-font-weight: 465;
-        --title-font-weight: 785;
-
-        --bg-color: #000000;
-        --accent-color: #00CC14;
-        --stroke-color: #000000;
-        --btn-text-color: #00CC14;
-
-        --bg-image: repeating-linear-gradient(270deg, #000 0px 2px, transparent 2px 4px),
-        repeating-linear-gradient(0deg, #000 0px 2px, transparent 2px 4px),
-        linear-gradient(#007f0c 0.01%, #004306 100%);
-  
-        --heart-contour-color: #00CC14;
-
-    }
 }

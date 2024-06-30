@@ -21,8 +21,8 @@
   color: var(--accent-color);
   font-family: var(--main-font, sans-serif), sans-serif;
   background-color: var(--bg-color);
-
   background-image: var(--bg-image);
+  background-position: center;
   background-size: cover;
   background-attachment: fixed;
   min-inline-size: 320px;
@@ -36,15 +36,15 @@
   align-items: center;
   margin: 100px 0;
   border: 2px solid var(--accent-color);
-  padding: clamp(7.5rem, 1.502vw + 7.148rem, 8.5rem) 0 25px;
+  padding-top: clamp(7.5rem, 1.502vw + 7.148rem, 8.5rem);
   background-color: var(--bg-color);
-  block-size: clamp(20.438rem, 3.85vw + 19.535rem, 23rem);
   inline-size: var(--section-width);
 }
 
 .header__logo {
   margin-block-end: 20px;
-  font-family: var(--accent-font, sans-serif), sans-serif;
+  outline: none;
+  font-family: var(--accent-font, fantasy), fantasy;
   font-weight: 400;
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   font-style: normal;
@@ -54,7 +54,8 @@
 }
 
 .header__title {
-  font-family: var(--accent-font, sans-serif), sans-serif;
+  margin-block-end: 25px;
+  font-family: var(--accent-font, fantasy), fantasy;
   font-weight: 400;
   font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
   font-style: normal;
@@ -62,29 +63,28 @@
   text-transform: uppercase;
 }
 
-.header__theme-menu {
-  margin: 22px 0;
-}
-
 .theme-menu__list {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: start;
-  gap: 10px;
+  gap: 8px;
+  margin-block-end: 20px;
   padding-inline-start: 14px;
 }
 
 .theme-menu__button {
   position: relative;
   border: none;
-  font-family: var(--accent-font, sans-serif), sans-serif;
+  padding: 0;
+  font-family: var(--accent-font, fantasy), fantasy;
   font-weight: 400;
   font-size: 14px;
   font-style: normal;
   line-height: 100%;
   text-transform: uppercase;
   background-color: transparent;
+  transition: opacity 0.3s ease;
   cursor: pointer;
   block-size: 14px;
 }
@@ -92,24 +92,19 @@
 .theme-menu__button:disabled::before {
   content: "▶";
   position: absolute;
-  inset: 0 auto 0 -10px;
+  inset: 0 auto 0 -16px;
   animation: moving-arrow 0.5s infinite alternate ease-in-out;
 }
 
 .theme-menu__button:hover,
-.theme-menu__button:disabled {
+.theme-menu__button:disabled,
+.theme-menu__button:focus {
+  outline: none;
   opacity: 0.6;
-  transition: opacity 0.3s ease;
 }
 
 .theme-menu__button:disabled {
   pointer-events: none;
-}
-
-.theme-menu__button:focus {
-  outline: none;
-  opacity: 0.6;
-  transition: opacity 0.3s ease;
 }
 
 /*Вариант реализации плавного подчёркивания при фокусе с transition*/
@@ -139,7 +134,6 @@
 }
 
 .theme-menu__button:focus-visible::after {
-  transition: transform 0.3s ease;
   transform: scaleX(1);
 }
 /*-----------------------------------------------------------------------------*/
@@ -172,6 +166,8 @@
 
 .card__image-container {
   position: relative;
+  border-block-start: 2px solid var(--accent-color);
+  border-block-end: 2px solid var(--accent-color);
 }
 
 .card__image {
@@ -185,7 +181,7 @@
   display: block;
   opacity: 0.5;
   color: var(--accent-color);
-  font-family: var(--accent-font, sans-serif), sans-serif;
+  font-family: var(--accent-font, fantasy), fantasy;
   font-weight: 400;
   font-size: 14px;
   font-style: normal;
@@ -232,6 +228,7 @@
   border: 2px solid transparent;
   padding: 0;
   background-color: transparent;
+  transition: border-color 0.3s ease;
   cursor: pointer;
   inline-size: 38px;
   block-size: 38px;
@@ -243,34 +240,32 @@
 
 .card__icon-button:focus-visible {
   border-color: var(--accent-color);
-  transition: border-color 0.3s ease;
 }
 
-.card__like-button {
+.button-main-type {
   position: relative;
   border: 2px solid var(--accent-color);
-  font-family: var(--accent-font, sans-serif), sans-serif;
+  font-family: var(--accent-font, fantasy), fantasy;
   font-weight: 400;
   font-size: 14px;
   font-style: normal;
   line-height: 90%;
   background-color: var(--bg-color);
   cursor: pointer;
-  inline-size: 130px;
-  block-size: 38px;
 }
 
-.card__like-button:focus,
-.save-button:focus,
-.modal__button:focus {
+.card__like-button {
+  inline-size: 130px;
+  block-size: 38px;
+  }
+
+.button-main-type:focus {
   box-shadow: 2px 2px 0 0 var(--accent-color);
   outline: none;
   transition: box-shadow 0.3s ease;
 }
 
-.card__like-button::after,
-.save-button::after,
-.modal__button::after {
+.button-main-type::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -282,41 +277,29 @@
   transform-origin: 0 0;
 }
 
-.card__like-button:hover::after,
-.save-button:hover::after,
-.modal__button:hover::after {
+.button-main-type:hover::after {
   transition: transform 0.5s ease-in-out;
   transform: scaleX(1);
 }
 
-.footer {
+.bottom {
   display: flex;
   justify-content: center;
   padding: 52px 0 103px;
 }
 
 .save-button {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
-  border: 2px solid var(--accent-color);
   color: var(--accent-color);
-  font-family: var(--accent-font, sans-serif), sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  font-style: normal;
-  line-height: 90%;
-  background-color: var(--bg-color);
-  cursor: pointer;
   inline-size: 335px;
   block-size: 55px;
 }
 
 .save-icon {
   z-index: 1;
-  /* color: var(--accent-color); */
   color: var(--btn-text-color);
   inline-size: 21px;
   block-size: 21px;
@@ -333,7 +316,6 @@
 .modal[open] {
 display: grid;
 gap: 30px;
-/* background-color: transparent; */
 border: 2px solid var(--accent-color);
 padding: 30px;
 background-color: var(--bg-color);
@@ -355,7 +337,7 @@ block-size: 39px;
 
 .modal__text {
 color: var(--accent-color);
-font-family: var(--accent-font, sans-serif), sans-serif;
+font-family: var(--accent-font, fantasy), fantasy;
 font-weight: 400;
 font-size: 14px;
 font-style: normal;
@@ -365,19 +347,10 @@ inline-size: 234px;
 }
 
 .modal__button {
-position: relative;
-border: 2px solid var(--accent-color);
-font-family: var(--accent-font, sans-serif), sans-serif;
-font-weight: 400;
-font-size: 14px;
-font-style: normal;
-line-height: 90%;
-text-transform: uppercase;
-background-color: var(--bg-color);
-cursor: pointer;
-inline-size: 293px;
-block-size: 38px;
-}
+  text-transform: uppercase;
+  inline-size: 293px;
+  block-size: 38px;
+  }
 
 .modal::backdrop {
   opacity: 0.75;
@@ -417,7 +390,7 @@ block-size: 38px;
 @media (width <= 375px) {
 
   .card__image-label {
-    inset-inline-end: 17px;
+    inset-inline-end: 13px;
   }
 
   .save-button {
