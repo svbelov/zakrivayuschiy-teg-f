@@ -269,12 +269,12 @@
       </section>
       <section class="bottom">
 
-        <button type="button" class="save-button button-main-type"
+        <button class="save-button button-main-type"
         type="button"
         onclick="window['dialog-id'].showModal()" 
-        aria-controls="modal-id">
+        aria-controls="dialog-id">
           <svg class="save-icon" viewBox="0 0 29 28">
-            <use href="./svg/floppy.svg#diskette">
+            <use href="./svg/floppy.svg#diskette" />
           </svg>
           <span class="button__text">Сохранить на&nbsp;память</span>
         </button>
@@ -282,11 +282,11 @@
         <dialog class="modal" id="dialog-id">
           <div class="modal__container">
             <svg class="modal__save-icon" viewBox="0 0 29 28">
-              <use href="./svg/floppy.svg#diskette">
+              <use href="./svg/floppy.svg#diskette"/>
             </svg>
             <p class="modal__text">Вставьте дискету, чтобы продолжить</p>
           </div>
-          <button type="button" class="modal__button button-main-type"
+          <button class="modal__button button-main-type"
           type="button"
           onclick="window['dialog-id'].close()">
             <span class="button__text">ОК</span>
